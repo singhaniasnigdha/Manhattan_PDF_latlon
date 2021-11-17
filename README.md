@@ -35,6 +35,8 @@ pip install -r requirements.txt
  ```
   python scripts/{script_name}.py --help
  ```
+ 
+ Created KDE models will be saved in a folder called  `kde/` and the generated plots in `images/`.
 
 ### Using Existing Models
 `models/` contains pre-built KDE kernels for each of the datasets defined above. They can be downloaded, and used to obtain the density estimation for a given latitude and longitude in Manhattan. An example of obtaining the result from a pandas data using the geographical coordinates is shown below. 
