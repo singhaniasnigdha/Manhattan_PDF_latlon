@@ -21,6 +21,7 @@ def save_kde_cloudpickle(kernel, f_name):
     create_parent_dir(f_name)
     with open(f_name, "wb") as f:
         cloudpickle.dump(kernel, f)
+    print(f'\nSaving KDE Model to {f_name}')
 
 
 def get_kde(df):
@@ -50,6 +51,7 @@ def plot_kde(kernel, f_name, x_min=40.65, x_max=40.95, y_min=-74.04, y_max=-73.8
 
     create_parent_dir("images/{f_name}.png")
     plt.savefig(f"images/{f_name}.png")
+    print(f'\nSaving KDE Plot to images/{f_name}.png')
 
 
 def heatmap(img, points, sigma=20):

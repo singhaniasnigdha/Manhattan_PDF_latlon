@@ -47,6 +47,8 @@ def get_crime_data(complaint_from="2017-01-01", limit=150000):
 
     # Convert to pandas DataFrame
     results_df = pd.DataFrame.from_records(results)
+    print(f"Imported {len(results_df)} street crime occurrences for Manhattan")
+
     results_df = results_df.drop(
         columns=[
             "susp_age_group",
@@ -67,7 +69,9 @@ def get_crime_data(complaint_from="2017-01-01", limit=150000):
     ).dropna(subset=["latitude", "longitude", "cmplnt_fr_dt"])
 
     # Clean data
-    return clean_crime_data(results_df, complaint_from)
+    clean_df = clean_crime_data(results_df, complaint_from)
+    print(f"# {len(clean_df)} after clean-up")
+    return clean_df
 
 
 if __name__ == "__main__":
