@@ -90,4 +90,4 @@ if __name__ == "__main__":
     utils.save_kde_cloudpickle(kernel, args.FILE)
 
     if args.PLOT:
-        utils.plot_kde(kernel)
+        utils.plot_kde(kernel, args.FILE)

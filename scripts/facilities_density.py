@@ -58,10 +58,10 @@ def split_save_types(df):
     ]
 
     fac_df = {
-        "education": edu_df,
-        "cultural": culture_df,
-        "health_ops": health_df,
-        "other_services": services_df,
+        "education_kde": edu_df,
+        "cultural_kde": culture_df,
+        "health_ops_kde": health_df,
+        "other_services_kde": services_df,
     }
     kernels = {}
 
@@ -115,5 +115,6 @@ if __name__ == "__main__":
     df = get_data(args.LIMIT)
     kernels = split_save_types(df)
 
-    # if args.PLOT:
-    #     utils.plot_kde(kernel)
+    if args.PLOT:
+        for k, v in kernels.items():
+            utils.plot_kde(v, k)
