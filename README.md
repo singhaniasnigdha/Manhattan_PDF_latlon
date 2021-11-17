@@ -1,8 +1,8 @@
 # Manhattan KDE values using Geographical Coordinates
 
-## Project
 
-### Data
+
+## Data
 Three datasets are used for this project, which are obtained from [NYC Open Data](https://opendata.cityofnewyork.us). [Open Data for All](https://www1.nyc.gov/assets/home/downloads/pdf/reports/2015/NYC-Open-Data-Plan-2015.pdf) is an initiative by [Mayor's Office of Data Analytics (MODA)](http://www1.nyc.gov/site/analytics/index.page) and [Department of Information Technology and Telecommunications (DoITT)](https://www1.nyc.gov/site/doitt/index.page) in collaboration with a third party vendor, Socrata, who host make this data available through APIs.
 
 Following are some details about the datasets used:
@@ -35,3 +35,20 @@ pip install -r requirements.txt
  ```
   python scripts/{script_name}.py --help
  ```
+
+### Using Existing Models
+`models/` contains pre-built KDE kernels for each of the datasets defined above. They can be downloaded, and used to obtain the density estimation for a given latitude and longitude in Manhattan. An example of obtaining the result from a pandas data using the geographical coordinates is shown below. 
+
+```
+import cloudpickle
+
+def get_density_est(pd_dataframe):
+   # Read the model file
+   model_file='2016_crime.cp.pkl'
+   with open(model_file, 'rb') as f:
+       kernel_fn = cloudpickle.load(f)
+   
+   # Calculate the density estimation at the given coordinate
+   # First argument is latitude, Second is longitude
+   kde_fn.pdf(pd_dataframe[['latitude', 'longitude']].to_numpy().T)
+```
