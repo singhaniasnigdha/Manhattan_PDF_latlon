@@ -43,10 +43,11 @@ pip install -r requirements.txt
 
 ```
 import cloudpickle
+import numpy as np
 
 def get_density_est(pd_dataframe):
    # Read the model file
-   model_file='2016_crime.cp.pkl'
+   model_file='models/2016_crime.cp.pkl'
    with open(model_file, 'rb') as f:
        kernel_fn = cloudpickle.load(f)
    
